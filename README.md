@@ -1,5 +1,5 @@
 # laravel auto generate models
-  依据数据库，自动生成Laravle所有表的Model. 
+  auto generate models for each table. 
   
 ## How does it work?
 
