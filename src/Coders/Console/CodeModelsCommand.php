@@ -3,7 +3,6 @@
 namespace Uipps\Coders\Console;
 
 use Illuminate\Console\Command;
-//use Uipps\Coders\Model\Factory;
 use Illuminate\Contracts\Config\Repository;
 
 class CodeModelsCommand extends Command
@@ -23,12 +22,7 @@ class CodeModelsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Parse connection schema into models';
-
-    /**
-     * @var \Uipps\Coders\Model\Factory
-     */
-    //protected $models;
+    protected $description = 'make models or controllers by Laravel self-function';
 
     /**
      * @var \Illuminate\Contracts\Config\Repository
@@ -41,12 +35,10 @@ class CodeModelsCommand extends Command
      * @param \Uipps\Coders\Model\Factory $models
      * @param \Illuminate\Contracts\Config\Repository $config
      */
-    //public function __construct(Factory $models, Repository $config)
     public function __construct(Repository $config)
     {
         parent::__construct();
 
-//        $this->models = $models;
         $this->config = $config;
     }
 
@@ -61,14 +53,14 @@ class CodeModelsCommand extends Command
 
         // Check whether we just need to generate one table
         if ($table) {
-            //$this->models->on($connection)->create($schema, $table);
-            $this->info("Check out your models for $table");
+            // TODO
+            $this->info("Check out your models for table $table");
         }
 
         // Otherwise map the whole database
         else {
-            //$this->models->on($connection)->map($schema);
-            $this->info("Check out your models for $schema");
+            // TODO
+            $this->info("Check out your models for database $schema");
         }
     }
 
