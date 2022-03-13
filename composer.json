@@ -14,6 +14,8 @@
             "email": "biosocial@gmail.com"
         }
     ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "require": {
         "php": "^7.3|^8.0",
         "doctrine/dbal": ">=2.5",
