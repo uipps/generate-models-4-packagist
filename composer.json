@@ -14,7 +14,6 @@
             "email": "biosocial@gmail.com"
         }
     ],
-    "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
         "php": "^7.3|^8.0",
@@ -27,18 +26,12 @@
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
-        "mockery/mockery": ">=1.4",
-        "phpunit/phpunit": "^9"
+        "mockery/mockery": ">=1.4"
     },
     "autoload": {
         "psr-4": {
             "Uipps\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
     },
     "config": {
         "preferred-install": "dist"
