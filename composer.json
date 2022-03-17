@@ -10,8 +10,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "bio-social",
-            "email": "biosocial@gmail.com"
+            "name": "uipps",
+            "email": "uipps_com@163.com"
         }
     ],
     "minimum-stability": "dev",
@@ -20,13 +20,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Uipps\\": "src/"
+            "Uipps\\GenerateModels4Packagist\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Uipps\\Coders\\CodersServiceProvider"
+                "Uipps\\GenerateModels4Packagist\\Coders\\CodersServiceProvider"
             ]
         }
     }

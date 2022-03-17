@@ -1,6 +1,6 @@
 <?php
 
-namespace Uipps\Coders\Console;
+namespace Uipps\GenerateModels4Packagist\Coders\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Uipps\Coders;
+namespace Uipps\GenerateModels4Packagist\Coders;
 
 use Illuminate\Support\ServiceProvider;
-use Uipps\Coders\Console\CodeModelsCommand;
+use Uipps\GenerateModels4Packagist\Coders\Commands\CodeModelsCommand;
 
 class CodersServiceProvider extends ServiceProvider
 {
