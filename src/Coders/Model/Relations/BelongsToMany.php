@@ -5,13 +5,13 @@
  * Date: 05/10/16 11:47 PM.
  */
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
 use Uipps\Support\Dumper;
 use Illuminate\Support\Fluent;
-use Uipps\Coders\Model\Model;
-use Uipps\Coders\Model\Relation;
+use Uipps\GenerateModels4Packagist\Coders\Model\Model;
+use Uipps\GenerateModels4Packagist\Coders\Model\Relation;
 use Illuminate\Database\Eloquent\Collection;
 
 class BelongsToMany implements Relation
@@ -27,17 +27,17 @@ class BelongsToMany implements Relation
     protected $referenceCommand;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $parent;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $pivot;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $reference;
 
@@ -46,9 +46,9 @@ class BelongsToMany implements Relation
      *
      * @param \Illuminate\Support\Fluent $parentCommand
      * @param \Illuminate\Support\Fluent $referenceCommand
-     * @param \Uipps\Coders\Model\Model $parent
-     * @param \Uipps\Coders\Model\Model $pivot
-     * @param \Uipps\Coders\Model\Model $reference
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $parent
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $pivot
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $reference
      */
     public function __construct(
         Fluent $parentCommand,

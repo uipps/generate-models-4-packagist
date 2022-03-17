@@ -1,6 +1,6 @@
 <?php
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
 

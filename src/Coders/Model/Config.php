@@ -5,7 +5,7 @@
  * Date: 11/09/16 09:00 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Arr;
 use Uipps\Meta\Blueprint;

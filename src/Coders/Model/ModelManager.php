@@ -5,7 +5,7 @@
  * Date: 02/10/16 08:24 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use ArrayIterator;
 use IteratorAggregate;
@@ -14,19 +14,19 @@ use Illuminate\Support\Arr;
 class ModelManager implements IteratorAggregate
 {
     /**
-     * @var \Uipps\Coders\Model\Factory
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Factory
      */
     protected $factory;
 
     /**
-     * @var \Uipps\Coders\Model\Model[]
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model[]
      */
     protected $models = [];
 
     /**
      * ModelManager constructor.
      *
-     * @param \Uipps\Coders\Model\Factory $factory
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Factory $factory
      */
     public function __construct(Factory $factory)
     {
@@ -36,10 +36,10 @@ class ModelManager implements IteratorAggregate
     /**
      * @param string $schema
      * @param string $table
-     * @param \Uipps\Coders\Model\Mutator[] $mutators
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Mutator[] $mutators
      * @param bool $withRelations
      *
-     * @return \Uipps\Coders\Model\Model
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     public function make($schema, $table, $mutators = [], $withRelations = true)
     {

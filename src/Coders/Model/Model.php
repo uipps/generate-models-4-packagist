@@ -5,15 +5,15 @@
  * Date: 11/09/16 12:11 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Str;
 use Uipps\Meta\Blueprint;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Uipps\Coders\Model\Relations\BelongsTo;
+use Uipps\GenerateModels4Packagist\Coders\Model\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Uipps\Coders\Model\Relations\ReferenceFactory;
+use Uipps\GenerateModels4Packagist\Coders\Model\Relations\ReferenceFactory;
 
 class Model
 {
@@ -23,7 +23,7 @@ class Model
     private $blueprint;
 
     /**
-     * @var \Uipps\Coders\Model\Factory
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Factory
      */
     private $factory;
 
@@ -58,12 +58,12 @@ class Model
     protected $casts = [];
 
     /**
-     * @var \Uipps\Coders\Model\Mutator[]
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Mutator[]
      */
     protected $mutators = [];
 
     /**
-     * @var \Uipps\Coders\Model\Mutation[]
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Mutation[]
      */
     protected $mutations = [];
 
@@ -166,8 +166,8 @@ class Model
      * ModelClass constructor.
      *
      * @param \Uipps\Meta\Blueprint $blueprint
-     * @param \Uipps\Coders\Model\Factory $factory
-     * @param \Uipps\Coders\Model\Mutator[] $mutators
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Factory $factory
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Mutator[] $mutators
      * @param bool $loadRelations
      */
     public function __construct(Blueprint $blueprint, Factory $factory, $mutators = [], $loadRelations = true)
@@ -318,7 +318,7 @@ class Model
     /**
      * @param \Illuminate\Support\Fluent $relation
      *
-     * @return $this|\Uipps\Coders\Model\Model
+     * @return $this|\Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     public function makeRelationModel(Fluent $relation)
     {
@@ -1048,7 +1048,7 @@ class Model
     }
 
     /**
-     * @return \Uipps\Coders\Model\Relation[]
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Relation[]
      */
     public function getRelations()
     {
@@ -1064,7 +1064,7 @@ class Model
     }
 
     /**
-     * @return \Uipps\Coders\Model\Mutation[]
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Mutation[]
      */
     public function getMutations()
     {

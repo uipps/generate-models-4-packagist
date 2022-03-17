@@ -5,7 +5,7 @@
  * Date: 11/09/16 09:26 PM.
  */
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;

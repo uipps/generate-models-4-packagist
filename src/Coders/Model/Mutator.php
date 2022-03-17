@@ -5,7 +5,7 @@
  * Date: 10/10/16 11:46 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Uipps\Meta\Blueprint;
 
@@ -63,7 +63,7 @@ class Mutator
 
     /**
      * @param string $attribute
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class Mutator
 
     /**
      * @param string $attribute
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return string
      */

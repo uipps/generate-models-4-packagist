@@ -1,9 +1,9 @@
 <?php
 
-namespace Uipps\Coders\Console;
+namespace Uipps\GenerateModels4Packagist\Coders\Console;
 
 use Illuminate\Console\Command;
-use Uipps\Coders\Model\Factory;
+use Uipps\GenerateModels4Packagist\Coders\Model\Factory;
 use Illuminate\Contracts\Config\Repository;
 
 class CodeModelsCommand extends Command
@@ -26,7 +26,7 @@ class CodeModelsCommand extends Command
     protected $description = 'Parse connection schema into models';
 
     /**
-     * @var \Uipps\Coders\Model\Factory
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Factory
      */
     protected $models;
 
@@ -38,7 +38,7 @@ class CodeModelsCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param \Uipps\Coders\Model\Factory $models
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Factory $models
      * @param \Illuminate\Contracts\Config\Repository $config
      */
     public function __construct(Factory $models, Repository $config)

@@ -1,13 +1,13 @@
 <?php
 
-namespace Uipps\Coders;
+namespace Uipps\GenerateModels4Packagist\Coders;
 
 use Uipps\Support\Classify;
-use Uipps\Coders\Model\Config;
+use Uipps\GenerateModels4Packagist\Coders\Model\Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
-use Uipps\Coders\Console\CodeModelsCommand;
-use Uipps\Coders\Model\Factory as ModelFactory;
+use Uipps\GenerateModels4Packagist\Coders\Console\CodeModelsCommand;
+use Uipps\GenerateModels4Packagist\Coders\Model\Factory as ModelFactory;
 
 class CodersServiceProvider extends ServiceProvider
 {

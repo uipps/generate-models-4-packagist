@@ -5,7 +5,7 @@
  * Date: 04/10/16 11:32 PM.
  */
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
 
@@ -17,12 +17,12 @@ class ReferenceFactory
     protected $related;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $parent;
 
     /**
-     * @var \Uipps\Coders\Model\Model[]
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model[]
      */
     protected $references = [];
 
@@ -30,7 +30,7 @@ class ReferenceFactory
      * ReferenceFactory constructor.
      *
      * @param array $related
-     * @param \Uipps\Coders\Model\Model $parent
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $parent
      */
     public function __construct($related, $parent)
     {
@@ -39,7 +39,7 @@ class ReferenceFactory
     }
 
     /**
-     * @return \Uipps\Coders\Model\Relation[]
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Relation[]
      */
     public function make()
     {
@@ -103,7 +103,7 @@ class ReferenceFactory
     }
 
     /**
-     * @return \Uipps\Coders\Model\Model
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected function getRelatedModel()
     {

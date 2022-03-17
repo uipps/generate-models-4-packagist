@@ -5,7 +5,7 @@
  * Date: 11/10/16 11:43 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Str;
 

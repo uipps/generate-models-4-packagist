@@ -5,13 +5,13 @@
  * Date: 05/09/16 11:41 PM.
  */
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
 use Uipps\Support\Dumper;
 use Illuminate\Support\Fluent;
-use Uipps\Coders\Model\Model;
-use Uipps\Coders\Model\Relation;
+use Uipps\GenerateModels4Packagist\Coders\Model\Model;
+use Uipps\GenerateModels4Packagist\Coders\Model\Relation;
 
 class BelongsTo implements Relation
 {
@@ -21,12 +21,12 @@ class BelongsTo implements Relation
     protected $command;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $parent;
 
     /**
-     * @var \Uipps\Coders\Model\Model
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     protected $related;
 
@@ -34,8 +34,8 @@ class BelongsTo implements Relation
      * BelongsToWriter constructor.
      *
      * @param \Illuminate\Support\Fluent $command
-     * @param \Uipps\Coders\Model\Model $parent
-     * @param \Uipps\Coders\Model\Model $related
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $parent
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $related
      */
     public function __construct(Fluent $command, Model $parent, Model $related)
     {

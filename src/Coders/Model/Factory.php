@@ -5,7 +5,7 @@
  * Date: 19/09/16 11:58 PM.
  */
 
-namespace Uipps\Coders\Model;
+namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Str;
 use Uipps\Meta\Blueprint;
@@ -37,17 +37,17 @@ class Factory
     protected $class;
 
     /**
-     * @var \Uipps\Coders\Model\Config
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Config
      */
     protected $config;
 
     /**
-     * @var \Uipps\Coders\Model\ModelManager
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\ModelManager
      */
     protected $models;
 
     /**
-     * @var \Uipps\Coders\Model\Mutator[]
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Mutator[]
      */
     protected $mutators = [];
 
@@ -57,7 +57,7 @@ class Factory
      * @param \Illuminate\Database\DatabaseManager $db
      * @param \Illuminate\Filesystem\Filesystem $files
      * @param \Uipps\Support\Classify $writer
-     * @param \Uipps\Coders\Model\Config $config
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Config $config
      */
     public function __construct(DatabaseManager $db, Filesystem $files, Classify $writer, Config $config)
     {
@@ -68,7 +68,7 @@ class Factory
     }
 
     /**
-     * @return \Uipps\Coders\Model\Mutator
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Mutator
      */
     public function mutate()
     {
@@ -76,7 +76,7 @@ class Factory
     }
 
     /**
-     * @return \Uipps\Coders\Model\ModelManager
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\ModelManager
      */
     protected function models()
     {
@@ -183,7 +183,7 @@ class Factory
      *
      * @param bool $withRelations
      *
-     * @return \Uipps\Coders\Model\Model
+     * @return \Uipps\GenerateModels4Packagist\Coders\Model\Model
      */
     public function makeModel($schema, $table, $withRelations = true)
     {
@@ -201,7 +201,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @todo: Delegate workload to SchemaManager and ModelManager
      *
@@ -228,7 +228,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      * @param string $name
      *
      * @return string
@@ -244,7 +244,7 @@ class Factory
 
     /**
      * @param string $template
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return mixed
      */
@@ -305,7 +305,7 @@ class Factory
      * Extract and replace fully-qualified class names from placeholder.
      *
      * @param string $placeholder Placeholder to extract class names from. Rewrites value to content without FQN
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return array Extracted FQN
      */
@@ -345,7 +345,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return string
      */
@@ -375,7 +375,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return string
      */
@@ -490,7 +490,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      * @param array $custom
      *
      * @return string
@@ -517,7 +517,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return bool
      */
@@ -527,7 +527,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -564,7 +564,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Coders\Model\Model $model
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $model
      *
      * @return string
      */
@@ -591,7 +591,7 @@ class Factory
      * @param string $key
      * @param mixed $default
      *
-     * @return mixed|\Uipps\Coders\Model\Config
+     * @return mixed|\Uipps\GenerateModels4Packagist\Coders\Model\Config
      */
     public function config(Blueprint $blueprint = null, $key = null, $default = null)
     {

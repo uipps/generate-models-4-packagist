@@ -5,16 +5,16 @@
  * Date: 11/09/16 09:26 PM.
  */
 
-namespace Uipps\Coders\Model\Relations;
+namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Fluent;
-use Uipps\Coders\Model\Model;
-use Uipps\Coders\Model\Relation;
+use Uipps\GenerateModels4Packagist\Coders\Model\Model;
+use Uipps\GenerateModels4Packagist\Coders\Model\Relation;
 
 class HasOneOrManyStrategy implements Relation
 {
     /**
-     * @var \Uipps\Coders\Model\Relation
+     * @var \Uipps\GenerateModels4Packagist\Coders\Model\Relation
      */
     protected $relation;
 
@@ -22,8 +22,8 @@ class HasOneOrManyStrategy implements Relation
      * HasManyWriter constructor.
      *
      * @param \Illuminate\Support\Fluent $command
-     * @param \Uipps\Coders\Model\Model $parent
-     * @param \Uipps\Coders\Model\Model $related
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $parent
+     * @param \Uipps\GenerateModels4Packagist\Coders\Model\Model $related
      */
     public function __construct(Fluent $command, Model $parent, Model $related)
     {
