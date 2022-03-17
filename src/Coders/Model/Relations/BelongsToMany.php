@@ -8,7 +8,7 @@
 namespace Uipps\GenerateModels4Packagist\Coders\Model\Relations;
 
 use Illuminate\Support\Str;
-use Uipps\Support\Dumper;
+use Uipps\GenerateModels4Packagist\Support\Dumper;
 use Illuminate\Support\Fluent;
 use Uipps\GenerateModels4Packagist\Coders\Model\Model;
 use Uipps\GenerateModels4Packagist\Coders\Model\Relation;

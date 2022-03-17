@@ -1,6 +1,6 @@
 <?php
 
-namespace Uipps\Meta\Postgres;
+namespace Uipps\GenerateModels4Packagist\Meta\Postgres;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Fluent;
@@ -9,7 +9,7 @@ use Illuminate\Support\Fluent;
  * Created by rwdim from cristians MySql original.
  * Date: 25/08/18 04:20 PM.
  */
-class Column implements \Uipps\Meta\Column
+class Column implements \Uipps\GenerateModels4Packagist\Meta\Column
 {
     /**
      * @var array

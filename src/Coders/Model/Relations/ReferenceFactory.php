@@ -111,7 +111,7 @@ class ReferenceFactory
     }
 
     /**
-     * @return \Uipps\Meta\Blueprint
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     protected function getRelatedBlueprint()
     {

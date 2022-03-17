@@ -2,7 +2,7 @@
 
 namespace Uipps\GenerateModels4Packagist\Coders;
 
-use Uipps\Support\Classify;
+use Uipps\GenerateModels4Packagist\Support\Classify;
 use Uipps\GenerateModels4Packagist\Coders\Model\Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;

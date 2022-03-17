@@ -1,9 +1,9 @@
 <?php
 
-namespace Uipps\Meta\MySql;
+namespace Uipps\GenerateModels4Packagist\Meta\MySql;
 
 use Illuminate\Support\Arr;
-use Uipps\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Connection;
  * Created by Cristian.
  * Date: 18/09/16 06:50 PM.
  */
-class Schema implements \Uipps\Meta\Schema
+class Schema implements \Uipps\GenerateModels4Packagist\Meta\Schema
 {
     /**
      * @var string
@@ -29,7 +29,7 @@ class Schema implements \Uipps\Meta\Schema
     protected $loaded = false;
 
     /**
-     * @var \Uipps\Meta\Blueprint[]
+     * @var \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     protected $tables = [];
 
@@ -98,7 +98,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      */
     protected function fillColumns(Blueprint $blueprint)
     {
@@ -121,7 +121,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      */
     protected function fillConstraints(Blueprint $blueprint)
     {
@@ -149,7 +149,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param string $sql
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @todo: Support named primary keys
      */
     protected function fillPrimaryKey($sql, Blueprint $blueprint)
@@ -170,7 +170,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param string $sql
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      */
     protected function fillIndexes($sql, Blueprint $blueprint)
     {
@@ -191,7 +191,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param string $sql
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @todo: Support named foreign keys
      */
     protected function fillRelations($sql, Blueprint $blueprint)
@@ -242,7 +242,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param string $table
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      *
      * @return array
      */
@@ -299,7 +299,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @return \Uipps\Meta\Blueprint[]
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     public function tables()
     {
@@ -309,7 +309,7 @@ class Schema implements \Uipps\Meta\Schema
     /**
      * @param string $table
      *
-     * @return \Uipps\Meta\Blueprint
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     public function table($table)
     {
@@ -329,7 +329,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $table
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $table
      *
      * @return array
      */

@@ -8,7 +8,7 @@
 namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Str;
-use Uipps\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Uipps\GenerateModels4Packagist\Coders\Model\Relations\BelongsTo;
@@ -18,7 +18,7 @@ use Uipps\GenerateModels4Packagist\Coders\Model\Relations\ReferenceFactory;
 class Model
 {
     /**
-     * @var \Uipps\Meta\Blueprint
+     * @var \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     private $blueprint;
 
@@ -38,7 +38,7 @@ class Model
     protected $relations = [];
 
     /**
-     * @var \Uipps\Meta\Blueprint[]
+     * @var \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     protected $references = [];
 
@@ -165,7 +165,7 @@ class Model
     /**
      * ModelClass constructor.
      *
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @param \Uipps\GenerateModels4Packagist\Coders\Model\Factory $factory
      * @param \Uipps\GenerateModels4Packagist\Coders\Model\Mutator[] $mutators
      * @param bool $loadRelations
@@ -443,7 +443,7 @@ class Model
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint[] $references
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint[] $references
      */
     public function withReferences($references)
     {
@@ -1158,7 +1158,7 @@ class Model
     }
 
     /**
-     * @return \Uipps\Meta\Blueprint
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     public function getBlueprint()
     {

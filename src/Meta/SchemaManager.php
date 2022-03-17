@@ -5,7 +5,7 @@
  * Date: 02/10/16 07:37 PM.
  */
 
-namespace Uipps\Meta;
+namespace Uipps\GenerateModels4Packagist\Meta;
 
 use ArrayIterator;
 use RuntimeException;
@@ -14,9 +14,9 @@ use Illuminate\Database\MySqlConnection;
 use Illuminate\Database\SQLiteConnection;
 use Illuminate\Database\PostgresConnection;
 use Illuminate\Database\ConnectionInterface;
-use Uipps\Meta\MySql\Schema as MySqlSchema;
-use Uipps\Meta\Sqlite\Schema as SqliteSchema;
-use Uipps\Meta\Postgres\Schema as PostgresSchema;
+use Uipps\GenerateModels4Packagist\Meta\MySql\Schema as MySqlSchema;
+use Uipps\GenerateModels4Packagist\Meta\Sqlite\Schema as SqliteSchema;
+use Uipps\GenerateModels4Packagist\Meta\Postgres\Schema as PostgresSchema;
 
 class SchemaManager implements IteratorAggregate
 {
@@ -36,7 +36,7 @@ class SchemaManager implements IteratorAggregate
     private $connection;
 
     /**
-     * @var \Uipps\Meta\Schema[]
+     * @var \Uipps\GenerateModels4Packagist\Meta\Schema[]
      */
     protected $schemas = [];
 
@@ -71,7 +71,7 @@ class SchemaManager implements IteratorAggregate
     /**
      * @param string $schema
      *
-     * @return \Uipps\Meta\Schema
+     * @return \Uipps\GenerateModels4Packagist\Meta\Schema
      */
     public function make($schema)
     {
@@ -85,7 +85,7 @@ class SchemaManager implements IteratorAggregate
     /**
      * @param string $schema
      *
-     * @return \Uipps\Meta\Schema
+     * @return \Uipps\GenerateModels4Packagist\Meta\Schema
      */
     protected function makeMapper($schema)
     {

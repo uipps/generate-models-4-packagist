@@ -7,7 +7,7 @@
 
 namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
-use Uipps\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
 
 class Mutator
 {
@@ -40,7 +40,7 @@ class Mutator
 
     /**
      * @param string $column
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      *
      * @return mixed
      */

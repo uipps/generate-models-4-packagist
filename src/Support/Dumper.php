@@ -5,7 +5,7 @@
  * Date: 11/09/16 05:18 PM.
  */
 
-namespace Uipps\Support;
+namespace Uipps\GenerateModels4Packagist\Support;
 
 class Dumper
 {

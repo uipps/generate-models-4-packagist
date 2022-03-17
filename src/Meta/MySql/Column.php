@@ -5,13 +5,13 @@
  * Date: 18/09/16 08:36 PM.
  */
 
-namespace Uipps\Meta\MySql;
+namespace Uipps\GenerateModels4Packagist\Meta\MySql;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Fluent;
 
-class Column implements \Uipps\Meta\Column
+class Column implements \Uipps\GenerateModels4Packagist\Meta\Column
 {
     /**
      * @var array

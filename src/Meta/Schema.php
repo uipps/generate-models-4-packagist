@@ -5,7 +5,7 @@
  * Date: 02/10/16 07:56 PM.
  */
 
-namespace Uipps\Meta;
+namespace Uipps\GenerateModels4Packagist\Meta;
 
 /**
  * Created by Cristian.
@@ -24,7 +24,7 @@ interface Schema
     public function schema();
 
     /**
-     * @return \Uipps\Meta\Blueprint[]
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     public function tables();
 
@@ -38,12 +38,12 @@ interface Schema
     /**
      * @param string $table
      *
-     * @return \Uipps\Meta\Blueprint
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     public function table($table);
 
     /**
-     * @param \Uipps\Meta\Blueprint $table
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $table
      *
      * @return array
      */

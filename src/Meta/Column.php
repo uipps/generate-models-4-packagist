@@ -5,7 +5,7 @@
  * Date: 02/10/16 11:06 PM.
  */
 
-namespace Uipps\Meta;
+namespace Uipps\GenerateModels4Packagist\Meta;
 
 interface Column
 {

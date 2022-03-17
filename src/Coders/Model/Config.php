@@ -8,7 +8,7 @@
 namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Arr;
-use Uipps\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
 
 class Config
 {
@@ -28,7 +28,7 @@ class Config
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @param string $key
      * @param mixed $default
      *

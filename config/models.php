@@ -68,8 +68,8 @@ return [
         */
 
         'use' => [
-            // Uipps\Database\Eloquent\BitBooleans::class,
-            // Uipps\Database\Eloquent\BlamableBehavior::class,
+            // Uipps\GenerateModels4Packagist\Database\Eloquent\BitBooleans::class,
+            // Uipps\GenerateModels4Packagist\Database\Eloquent\BlamableBehavior::class,
         ],
 
         /*
@@ -441,7 +441,7 @@ return [
     //     'snake_attributes' => false,
     //     'qualified_tables' => true,
     //     'use' => [
-    //         Uipps\Database\Eloquent\BitBooleans::class,
+    //         Uipps\GenerateModels4Packagist\Database\Eloquent\BitBooleans::class,
     //     ],
     //     'except' => ['migrations'],
     //     'only' => ['users'],

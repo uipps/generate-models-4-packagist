@@ -5,7 +5,7 @@
  * Date: 05/09/16 11:27 PM.
  */
 
-namespace Uipps\Support;
+namespace Uipps\GenerateModels4Packagist\Support;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;

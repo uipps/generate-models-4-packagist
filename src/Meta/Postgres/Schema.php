@@ -1,9 +1,9 @@
 <?php
 
-namespace Uipps\Meta\Postgres;
+namespace Uipps\GenerateModels4Packagist\Meta\Postgres;
 
 use Illuminate\Support\Arr;
-use Uipps\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Connection;
  * Created by rwdim from cristians MySql original.
  * Date: 25/08/18 04:13 PM.
  */
-class Schema implements \Uipps\Meta\Schema
+class Schema implements \Uipps\GenerateModels4Packagist\Meta\Schema
 {
     /**
      * @var string
@@ -29,7 +29,7 @@ class Schema implements \Uipps\Meta\Schema
     protected $loaded = false;
 
     /**
-     * @var \Uipps\Meta\Blueprint[]
+     * @var \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     protected $tables = [];
 
@@ -90,7 +90,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      */
     protected function fillColumns(Blueprint $blueprint)
     {
@@ -117,7 +117,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      */
     protected function fillConstraints(Blueprint $blueprint)
     {
@@ -162,7 +162,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param array $relations
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @todo: Support named primary keys
      */
     protected function fillPrimaryKey($relations, Blueprint $blueprint)
@@ -185,7 +185,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param array $indexes
-     * @param \Uipps\Meta\Blueprint $blueprintx
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprintx
      */
     protected function fillIndexes($indexes, Blueprint $blueprint)
     {
@@ -206,7 +206,7 @@ class Schema implements \Uipps\Meta\Schema
 
     /**
      * @param array $relations
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      * @todo: Support named foreign keys
      */
     protected function fillRelations($relations, Blueprint $blueprint)
@@ -301,7 +301,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @return \Uipps\Meta\Blueprint[]
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint[]
      */
     public function tables()
     {
@@ -311,7 +311,7 @@ class Schema implements \Uipps\Meta\Schema
     /**
      * @param string $table
      *
-     * @return \Uipps\Meta\Blueprint
+     * @return \Uipps\GenerateModels4Packagist\Meta\Blueprint
      */
     public function table($table)
     {
@@ -331,7 +331,7 @@ class Schema implements \Uipps\Meta\Schema
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $table
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $table
      *
      * @return array
      */

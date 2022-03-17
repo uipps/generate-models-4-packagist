@@ -5,7 +5,7 @@
  * Date: 18/09/16 08:19 PM.
  */
 
-namespace Uipps\Meta;
+namespace Uipps\GenerateModels4Packagist\Meta;
 
 use Illuminate\Support\Fluent;
 
@@ -241,7 +241,7 @@ class Blueprint
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $table
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $table
      *
      * @return array
      */

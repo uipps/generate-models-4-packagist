@@ -5,7 +5,7 @@
  * Date: 09/10/16 07:34 PM.
  */
 
-namespace Uipps\Database\Eloquent;
+namespace Uipps\GenerateModels4Packagist\Database\Eloquent;
 
 trait BitBooleans
 {

@@ -8,9 +8,9 @@
 namespace Uipps\GenerateModels4Packagist\Coders\Model;
 
 use Illuminate\Support\Str;
-use Uipps\Meta\Blueprint;
-use Uipps\Support\Classify;
-use Uipps\Meta\SchemaManager;
+use Uipps\GenerateModels4Packagist\Meta\Blueprint;
+use Uipps\GenerateModels4Packagist\Support\Classify;
+use Uipps\GenerateModels4Packagist\Meta\SchemaManager;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Database\DatabaseManager;
 
@@ -22,7 +22,7 @@ class Factory
     private $db;
 
     /**
-     * @var \Uipps\Meta\SchemaManager
+     * @var \Uipps\GenerateModels4Packagist\Meta\SchemaManager
      */
     protected $schemas = [];
 
@@ -32,7 +32,7 @@ class Factory
     protected $files;
 
     /**
-     * @var \Uipps\Support\Classify
+     * @var \Uipps\GenerateModels4Packagist\Support\Classify
      */
     protected $class;
 
@@ -56,7 +56,7 @@ class Factory
      *
      * @param \Illuminate\Database\DatabaseManager $db
      * @param \Illuminate\Filesystem\Filesystem $files
-     * @param \Uipps\Support\Classify $writer
+     * @param \Uipps\GenerateModels4Packagist\Support\Classify $writer
      * @param \Uipps\GenerateModels4Packagist\Coders\Model\Config $config
      */
     public function __construct(DatabaseManager $db, Filesystem $files, Classify $writer, Config $config)
@@ -120,7 +120,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      *
      * @return bool
      */
@@ -136,7 +136,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint $blueprint
      *
      * @return bool
      */
@@ -193,7 +193,7 @@ class Factory
     /**
      * @param string $schema
      *
-     * @return \Uipps\Meta\Schema
+     * @return \Uipps\GenerateModels4Packagist\Meta\Schema
      */
     public function makeSchema($schema)
     {
@@ -587,7 +587,7 @@ class Factory
     }
 
     /**
-     * @param \Uipps\Meta\Blueprint|null $blueprint
+     * @param \Uipps\GenerateModels4Packagist\Meta\Blueprint|null $blueprint
      * @param string $key
      * @param mixed $default
      *

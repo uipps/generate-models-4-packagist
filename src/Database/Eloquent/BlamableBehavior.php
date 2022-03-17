@@ -5,7 +5,7 @@
  * Date: 12/10/16 12:30 AM.
  */
 
-namespace Uipps\Database\Eloquent;
+namespace Uipps\GenerateModels4Packagist\Database\Eloquent;
 
 trait BlamableBehavior
 {
