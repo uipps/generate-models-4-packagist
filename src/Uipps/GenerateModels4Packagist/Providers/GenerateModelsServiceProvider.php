@@ -1,11 +1,11 @@
 <?php
 
-namespace Uipps\GenerateModels4Packagist\Coders;
+namespace Uipps\GenerateModels4Packagist\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Uipps\GenerateModels4Packagist\Coders\Commands\CodeModelsCommand;
+use Uipps\GenerateModels4Packagist\Commands\GenerateModelsCommand;
 
-class CodersServiceProvider extends ServiceProvider
+class GenerateModelsServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -16,7 +16,7 @@ class CodersServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                CodeModelsCommand::class,
+                GenerateModelsCommand::class,
             ]);
         }
     }

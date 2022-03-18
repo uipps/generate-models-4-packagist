@@ -20,13 +20,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Uipps\\GenerateModels4Packagist\\": "src/"
+            "Uipps\\GenerateModels4Packagist\\": "src/Uipps/GenerateModels4Packagist"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Uipps\\GenerateModels4Packagist\\Coders\\CodersServiceProvider"
+                "Uipps\\GenerateModels4Packagist\\Providers\\GenerateModelsServiceProvider"
             ]
         }
     }

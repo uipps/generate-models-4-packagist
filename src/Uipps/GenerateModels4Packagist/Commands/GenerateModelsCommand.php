@@ -1,20 +1,20 @@
 <?php
 
-namespace Uipps\GenerateModels4Packagist\Coders\Commands;
+namespace Uipps\GenerateModels4Packagist\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository;
 
-class CodeModelsCommand extends Command
+class GenerateModelsCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'code:models
-                            {--s|schema= : The name of the MySQL database}
+    protected $signature = 'generate:models
                             {--c|connection= : The name of the connection}
+                            {--s|schema= : The name of the MySQL database}
                             {--t|table= : The name of the table}';
 
     /**
@@ -51,17 +51,11 @@ class CodeModelsCommand extends Command
         $schema = $this->getSchema($connection);
         $table = $this->getTable();
 
-        // Check whether we just need to generate one table
-        if ($table) {
-            // TODO
-            $this->info("Check out your models for table $table");
-        }
-
-        // Otherwise map the whole database
-        else {
-            // TODO
-            $this->info("Check out your models for database $schema");
-        }
+        // 支持dsn形式的连接形式；
+        echo ' $connection: ' ; print_r($connection); echo "\r\n";
+        echo ' $schema: ' ; print_r($schema); echo "\r\n";
+        echo ' $table: ' ; var_dump($table); echo "\r\n";
+        return ;
     }
 
     /**
