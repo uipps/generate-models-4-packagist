@@ -1,5 +1,15 @@
 <?php
-// php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511/laravel_new"
+/*
+ 自动生成model、controller等，支持指定目录
+
+ 如：
+ php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511/laravel_dev" -d laravel_dev
+
+ -- 指定目录 -p
+ php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511/laravel_dev" -p Uipps/
+
+
+ */
 namespace Uipps\GenerateModels4Packagist\Commands;
 
 use Illuminate\Console\Command;
@@ -12,11 +22,24 @@ class GenerateModelsCommand extends Command
 {
     const DOT_REPLACE_TO_STR = '---______---'; // 配置中不能有. ,否则会被当成数组的层级，因此需要将配置中的.替换成特殊符号便于还原
 
-    // The name and signature of the console command.
+    /*
+    The name and signature of the console command.
+ 不要跟如下冲突：
+ -h, --help                     Display help for the given command. When no command is given display help for the list command
+ -q, --quiet                    Do not output any message
+ -V, --version                  Display this application version
+     --ansi|--no-ansi           Force (or disable --no-ansi) ANSI output
+ -n, --no-interaction           Do not ask any interactive question
+     --env[=ENV]                The environment the command should run under
+ -v|vv|vvv, --verbose           Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+     */
     protected $signature = 'generate:models
                             {--c|connection= : The name of the connection}
                             {--d|database= : The name of the MySQL database}
-                            {--t|table= : The name of the table}';
+                            {--t|table= : The name of the table}
+                            {--p|path_relative= : The relative path}
+                            ';
 
     protected $description = 'Make models or controllers by Laravel self-function';
 
@@ -40,21 +63,42 @@ class GenerateModelsCommand extends Command
         $this->_connection = $this->getConnection();
         $this->_database = $this->getSchema();
         $this->_table_list = $this->getTables($this->_connection);
+        $relative_path = $this->option('path_relative');            // 相对路径
 
         // 支持dsn形式的连接形式；
         echo ' $connection: ' ; print_r($this->_connection); echo "\r\n";
         echo ' $database: ' ; print_r($this->_database); echo "\r\n";
         echo ' $tables: ' ; print_r($this->_table_list); echo "\r\n";
 
-        //$outputBuffer = '';
-        // 相当于执行 php artisan make:controller uipps/Admin/CountryController --resource --model=uipps/Admin/Country
-        //Artisan::call('make:controller', ['uipps/Admin2/CountryController', '--resource', '--model=uipps/Admin2/Country'], $outputBuffer);
-        //$exitCode = Artisan::call('make:controller uipps/Admin7/CountryController --resource --model=uipps/Admin7/Country --quiet');
-        //$exitCode = Artisan::call('make:controller uipps/Admin8/CountryController --resource --model=uipps/Admin8/Country');
-//        $exitCode = Artisan::call('make:model uipps/Admin9/Country --controller=uipps/Admin9/CountryController --resource');
-//        $output = Artisan::output();
-//        echo ' $rlt: ' ; var_dump($exitCode); echo "\r\n";
-//        echo ' $output: ' ; var_dump($output); echo "\r\n";
+        // 设置好数据库连接信息后，开始执行自动生成Model、Controller
+        if (!$this->_table_list)
+            return ;
+
+        foreach ($this->_table_list as $l_tbl) {
+            self::generateOneTable($relative_path, $l_tbl);
+        }
+        return ;
+    }
+
+    /*  生成单个model
+        由于 php artisan make:model Uipps/Admin/Project --controller=uipps/Admin/Project 会报错 "--controller" option does not accept a value.
+        再者 php artisan make:model uipps/Admin/Project --controller'  -- 生成的 controller路径不是期望的uipps/Admin/路径
+        而  php artisan make:controller 能同时指定model和control的路径，所以make:controller才是正确选择
+
+        // 相当于执行 php artisan make:controller uipps/Admin/ProjectController --model=uipps/Admin/Project
+        //Artisan::call('make:controller', ['uipps/Admin2/ProjectController', '--resource', '--model=uipps/Admin2/Project'], $outputBuffer);
+        //$eCode = Artisan::call('make:controller uipps/Admin/ProjectController --model=uipps/Admin/Project --quiet');
+        //$eCode = Artisan::call('make:controller uipps/Admin/ProjectController --model=uipps/Admin/Project');
+     */
+    protected function generateOneTable($a_path, $a_table) {
+        $fmt_table = self::classify($a_table);    // 下划线等变驼峰命名
+        $fmt_path = self::fmtPath($a_path);
+
+        //$cmd = 'make:controller uipps/Admin/ProjectController --model=uipps/Admin/Project --quiet';
+        $cmd = 'make:controller '. $fmt_path . $fmt_table .'Controller --model='. $fmt_path . $fmt_table .' --quiet';
+        $exitCode = Artisan::call($cmd);
+        $output = Artisan::output();
+        echo '  make:controller, Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
         return ;
     }
@@ -98,14 +142,19 @@ class GenerateModelsCommand extends Command
                 $db_connect_info['username'] = $dsn['user'];
             if (isset($dsn['pass']))
                 $db_connect_info['password'] = $dsn['pass'];
+
+            $l_tmp_db = ''; // dsn中的数据库
             if (isset($dsn['path'])) {
-                // 数据库
                 $l_tmp_db = basename($dsn['path']);
                 if ($l_tmp_db) {
                     $db_connect_info['database'] = $l_tmp_db;   // $dsn['path']可能是/,basename后就是空字符串。
                     $this->_database = $l_tmp_db;               // 数据库指定，也可能是空的，可被-d参数覆盖
                 }
             }
+            if (!$l_tmp_db && $this->option('database') != $db_schema_default) {
+                $db_connect_info['database'] = $this->option('database');
+            }
+
             // 是否就是默认连接，默认连接也不需要修改 $this->_connection 的值
             if ($db_connect_info == $db_default_config) {
                 $this->_database = '';  // 默认即可
@@ -113,6 +162,7 @@ class GenerateModelsCommand extends Command
                 // 新增一条数据库配置
                 $this->_connection = self::getConnectName($db_connect_info);
                 \Config::set('database.connections.' . $this->_connection, $db_connect_info);
+                //print_r(\Config::get('database.connections'));
             }
         }
 
@@ -134,6 +184,11 @@ class GenerateModelsCommand extends Command
 
         // 用指定的赋值。$this->_database 为空或等于$l_schema，均可
         $this->_database = $l_schema;
+
+        // 给该连接的database赋值，因为可能指定了非默认数据库名称
+        $db_connect_info = \Config::get('database.connections.' . $this->_connection);
+        $db_connect_info['database'] = $this->_database;
+        \Config::set('database.connections.' . $this->_connection, $db_connect_info);
 
         // 检查一下指定的数据库是否存在，如果不存在，则提示。
         //$current_db_name = DB::connection()->getDoctrineSchemaManager()->getSchemaSearchPaths();var_dump($current_db_name[0]); // 当前数据库名称
@@ -175,5 +230,26 @@ class GenerateModelsCommand extends Command
         if ($replace_dot)
             return str_replace('.', self::DOT_REPLACE_TO_STR, $dsn); // 保证没有.符号, 防止config.set的时候出现问题
         return $dsn;
+    }
+
+    // hello world ==> HelloWorld
+    public static function classify(string $word) {
+        return str_replace([' ', '_', '-'], '', ucwords($word, ' _-'));
+    }
+
+    // 首字母小写
+    //public static function camelize(string $word) {
+    //    return lcfirst(self::classify($word));
+    //}
+
+    // 路径转成相对路径，[\uipps\admin\, uipps\admin, /uipps/admin/, uipps/admin] ...  ===> 都转成 uipps/admin/
+    public static function fmtPath(string $a_str) {
+        if (!$a_str) return '';
+        $a_str = str_replace(['\\', '//'], '/', $a_str);
+        //$a_str = str_replace('//', '/', $a_str);          //  上面一行代码就搞定了 \\uipps\\admin\\ 会被替换成单/.
+        $a_str = trim($a_str, '/');
+        if (!$a_str)
+            return '';
+        return $a_str . '/';
     }
 }
