@@ -9,7 +9,7 @@ You will need to import the `uipps/generate-models-4-packagist` package via comp
 ### Configuration
 
 ```shell
-composer require uipps/generate-models-4-packagist --dev
+composer require uipps/generate-models-4-packagist
 ```
 
 ### Usage
@@ -32,30 +32,34 @@ php artisan generate:models --table=users
 
 ```shell
 php artisan generate:models --connection=mysql
+php artisan generate:models -c mysql
+
+// dsn connection
+php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511/laravel_dev"
 ```
 
-- If you are using a MySQL database, you can specify which schema you want to scaffold:
+- If you are using a MySQL database, you can specify which database you want to scaffold:
 
 ```shell
-php artisan generate:models --schema=shop
+php artisan generate:models --database=shop
 ```
 
 - other params
 ```
-php artisan generate:models --type=model --class-name=role --all
+php artisan generate:models --table=Country --path_relative=Uipps/Admin
 means:
-php artisan make:model role --all
+php artisan make:controller Uipps/Admin/CountryController --model=Uipps/Admin/Country
 
 ```
 
 - make controller
 ```
-php artisan generate:models --type=controller uipps/Admin/CountryController --resource --model=uipps/Admin/Country
+php artisan generate:models --table Country -p uipps/Admin
 means:
-php artisan make:controller uipps/Admin/CountryController --resource --model=uipps/Admin/Country
+php artisan make:controller uipps/Admin/CountryController --model=uipps/Admin/Country
 
 ```
 
 #### Support
 
-For the time being, this package supports MySQL, PostgreSQL and SQLite databases. Support for other databases are encouraged to be added through pull requests.
+For the time being, this package supports MySQL only. PostgreSQL and SQLite databases will be Supported in future.

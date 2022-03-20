@@ -186,13 +186,17 @@ class GenerateModelsCommand extends Command
         $this->_database = $l_schema;
 
         // 给该连接的database赋值，因为可能指定了非默认数据库名称
-        $db_connect_info = \Config::get('database.connections.' . $this->_connection);
+        $l_conn = $this->_connection;
+        if (!$l_conn)
+            $l_conn = \Config::get('database.default');
+
+        $db_connect_info = \Config::get('database.connections.' . $l_conn);
         $db_connect_info['database'] = $this->_database;
-        \Config::set('database.connections.' . $this->_connection, $db_connect_info);
+        \Config::set('database.connections.' . $l_conn, $db_connect_info);
 
         // 检查一下指定的数据库是否存在，如果不存在，则提示。
         //$current_db_name = DB::connection()->getDoctrineSchemaManager()->getSchemaSearchPaths();var_dump($current_db_name[0]); // 当前数据库名称
-        $db_list = DB::connection($this->_connection)->getDoctrineSchemaManager()->listDatabases();//print_r($db_list);
+        $db_list = DB::connection($l_conn)->getDoctrineSchemaManager()->listDatabases();//print_r($db_list);
         if (!in_array($this->_database, $db_list)) {
             throw new \Exception($this->_database . ' database not exist!');
         }
@@ -243,7 +247,7 @@ class GenerateModelsCommand extends Command
     //}
 
     // 路径转成相对路径，[\uipps\admin\, uipps\admin, /uipps/admin/, uipps/admin] ...  ===> 都转成 uipps/admin/
-    public static function fmtPath(string $a_str) {
+    public static function fmtPath($a_str) {
         if (!$a_str) return '';
         $a_str = str_replace(['\\', '//'], '/', $a_str);
         //$a_str = str_replace('//', '/', $a_str);          //  上面一行代码就搞定了 \\uipps\\admin\\ 会被替换成单/.
