@@ -20,7 +20,7 @@ use Exception;
 
 class GenerateModelsCommand extends Command
 {
-    const DOT_REPLACE_TO_STR = '---______---'; // 配置中不能有. ,否则会被当成数组的层级，因此需要将配置中的.替换成特殊符号便于还原
+    const DOT_REPLACE_TO_STR = '---______---'; // 配置中不能有.点符号, 否则会被当成数组的层级，因此需要将配置中的.替换成特殊符号便于还原
 
     /*
     The name and signature of the console command.

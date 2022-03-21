@@ -54,7 +54,7 @@ php artisan make:controller Uipps/Admin/CountryController --model=Uipps/Admin/Co
 
 - make controller
 ```
-php artisan generate:models --table Country -p uipps/Admin
+php artisan generate:models -t Country -p uipps/Admin
 means:
 php artisan make:controller uipps/Admin/CountryController --model=uipps/Admin/Country
 
