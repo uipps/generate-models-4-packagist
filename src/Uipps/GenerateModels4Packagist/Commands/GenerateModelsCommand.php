@@ -8,6 +8,7 @@
  -- 指定目录 -p
  php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511/laravel_dev" -p Uipps/
 
+ php artisan generate:models -p Uipps/ --cast=1 --event=1 --observer=1 --scope=1
 
  */
 namespace Uipps\GenerateModels4Packagist\Commands;
@@ -39,6 +40,10 @@ class GenerateModelsCommand extends Command
                             {--d|database= : The name of the MySQL database}
                             {--t|table= : The name of the table}
                             {--p|path_relative= : The relative path}
+                            {--cast= : Create a new custom Eloquent cast class}
+                            {--e|event= : Create a new event class}
+                            {--o|observer= : Create a new observer class}
+                            {--s|scope= : Create a new scope class}
                             ';
 
     protected $description = 'Make models or controllers by Laravel self-function';
@@ -99,6 +104,22 @@ class GenerateModelsCommand extends Command
         $exitCode = Artisan::call($cmd);
         $output = Artisan::output();
         echo '  make:controller, Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
+
+        self::makeCode('cast', $fmt_path, $fmt_table, $a_path, $a_table);
+        self::makeCode('event', $fmt_path, $fmt_table, $a_path, $a_table);
+        self::makeCode('observer', $fmt_path, $fmt_table, $a_path, $a_table);
+        self::makeCode('scope', $fmt_path, $fmt_table, $a_path, $a_table);
+
+        return ;
+    }
+
+    protected function makeCode($a_action, $fmt_path, $fmt_table, $a_path, $a_table) {
+        if (!$this->option($a_action))
+            return ;
+        $cmd = 'make:'.$a_action.' '. $fmt_path . $fmt_table;
+        $exitCode = Artisan::call($cmd);
+        $output = Artisan::output();
+        echo '  make:'.$a_action.', Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
         return ;
     }

@@ -1,5 +1,5 @@
-# auto generate models base on laravel
-  auto generate models for each table base on laravel function. 
+# auto generate models and controllers base on laravel
+  auto generate models and controllers for each table base on laravel function. 
   
 ## How does it work?
 
@@ -20,6 +20,8 @@ Assuming you have already configured your database, you are now all set to go.
 
 ```shell
 php artisan generate:models
+
+php artisan generate:models --cast=1 --event=1 --observer=1 --scope=1
 ```
 
 - You can scaffold a specific table like this:
@@ -50,11 +52,17 @@ php artisan generate:models --table=Country --path_relative=Uipps/Admin
 means:
 php artisan make:controller Uipps/Admin/CountryController --model=Uipps/Admin/Country
 
+
+// make cast,event,observer,scope
+php artisan generate:models -p Uipps/ --cast=1 --event=1 --observer=1 --scope=1
+or:
+php artisan generate:models -p Uipps/ --cast=1 -e 1 -o 1 -s 1
+
 ```
 
 - make controller
 ```
-php artisan generate:models -t Country -p uipps/Admin
+php artisan generate:models -t Country -p Uipps/Admin
 means:
 php artisan make:controller uipps/Admin/CountryController --model=uipps/Admin/Country
 
