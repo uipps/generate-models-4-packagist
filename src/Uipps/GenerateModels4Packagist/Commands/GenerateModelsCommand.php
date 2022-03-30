@@ -14,7 +14,6 @@
 namespace Uipps\GenerateModels4Packagist\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Exception;
@@ -127,15 +126,15 @@ class GenerateModelsCommand extends Command
     protected function getConnection() {
         $l_conn = $this->option('connection');  // 参数接收
 
-        $db_schema_default = \Config::get('database.default');
+        $db_schema_default = config('database.default');
         if (!$l_conn || $l_conn == $db_schema_default) {
-            // 默认连接，空字符串或 Config::get('database.default'); 均可
+            // 默认连接，空字符串或 config('database.default'); 均可
             return $this->_connection;
         }
 
         // 当前config/database.php中的配置
-        $db_config_list = \Config::get('database.connections');
-        $db_default_config = \Config::get('database.connections.' . $db_schema_default);
+        $db_config_list = config('database.connections');
+        $db_default_config = config('database.connections.' . $db_schema_default);
 
         if (isset($db_config_list[$l_conn])) {
             $this->_connection = $l_conn;
@@ -182,8 +181,8 @@ class GenerateModelsCommand extends Command
             } else {
                 // 新增一条数据库配置
                 $this->_connection = self::getConnectName($db_connect_info);
-                \Config::set('database.connections.' . $this->_connection, $db_connect_info);
-                //print_r(\Config::get('database.connections'));
+                config(['database.connections.' . $this->_connection => $db_connect_info]);
+                //print_r(config('database.connections'));
             }
         }
 
@@ -193,7 +192,7 @@ class GenerateModelsCommand extends Command
     protected function getSchema() {
         $l_schema = $this->option('database');  // 参数接收
         if (!$l_schema) {
-            // 未指定，可能是dsn中指定的，也可能是默认 Config::get("database.connections.$connection.database"
+            // 未指定，可能是dsn中指定的，也可能是默认 config("database.connections.$connection.database"
             return $this->_database;
         }
 
@@ -209,11 +208,11 @@ class GenerateModelsCommand extends Command
         // 给该连接的database赋值，因为可能指定了非默认数据库名称
         $l_conn = $this->_connection;
         if (!$l_conn)
-            $l_conn = \Config::get('database.default');
+            $l_conn = config('database.default');
 
-        $db_connect_info = \Config::get('database.connections.' . $l_conn);
+        $db_connect_info = config('database.connections.' . $l_conn);
         $db_connect_info['database'] = $this->_database;
-        \Config::set('database.connections.' . $l_conn, $db_connect_info);
+        config(['database.connections.' . $l_conn => $db_connect_info]);
 
         // 检查一下指定的数据库是否存在，如果不存在，则提示。
         //$current_db_name = DB::connection()->getDoctrineSchemaManager()->getSchemaSearchPaths();var_dump($current_db_name[0]); // 当前数据库名称
