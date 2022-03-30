@@ -209,12 +209,15 @@ class GenerateModelsCommand extends Command
         $l_tbl = $this->option('table');
         //echo ' $table: ' ; var_dump($l_tbl); echo "\r\n";
 
-        if ($l_tbl) {
-            return [$l_tbl];
-        }
         // 获取所有数据表：
         $tbl_list = DB::connection($a_conn)->getDoctrineSchemaManager()->listTableNames();//print_r($tbl_list);
-        return $tbl_list;
+        if (!$l_tbl)
+            return $tbl_list;
+
+        if (!in_array($l_tbl, $tbl_list))
+            throw new \Exception($l_tbl . ' table not exist!');
+
+        return [$l_tbl];
     }
 
     // 由于config::set的限制，必须保证返回的字符串中没有点符号'.'
@@ -240,11 +243,6 @@ class GenerateModelsCommand extends Command
     public static function classify(string $word) {
         return str_replace([' ', '_', '-'], '', ucwords($word, ' _-'));
     }
-
-    // 首字母小写
-    //public static function camelize(string $word) {
-    //    return lcfirst(self::classify($word));
-    //}
 
     // 路径转成相对路径，[\uipps\admin\, uipps\admin, /uipps/admin/, uipps/admin] ...  ===> 都转成 uipps/admin/
     public static function fmtPath($a_str) {
