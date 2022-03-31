@@ -99,10 +99,10 @@ class GenerateModelsCommand extends Command
         $fmt_path = self::fmtPath($a_path);
 
         //$cmd = 'make:controller uipps/Admin/ProjectController --model=uipps/Admin/Project --quiet';
-        $cmd = 'make:controller '. $fmt_path . $fmt_table .'Controller --model='. $fmt_path . $fmt_table .' --quiet';
+        $cmd = 'make:controller '. $fmt_path . $fmt_table .'Controller --model='. $fmt_path . $fmt_table .' --invokable --quiet';
         $exitCode = Artisan::call($cmd);
         $output = Artisan::output();
-        echo '  make:controller, Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
+        echo '    CMD: php artisan '.$cmd.' ; Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
         self::makeCode('cast', $fmt_path, $fmt_table, $a_path, $a_table);
         self::makeCode('event', $fmt_path, $fmt_table, $a_path, $a_table);
@@ -118,7 +118,7 @@ class GenerateModelsCommand extends Command
         $cmd = 'make:'.$a_action.' '. $fmt_path . $fmt_table;
         $exitCode = Artisan::call($cmd);
         $output = Artisan::output();
-        echo '  make:'.$a_action.', Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
+        echo '    CMD: php artisan '.$cmd.' ; Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
         return ;
     }
