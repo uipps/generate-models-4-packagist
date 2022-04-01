@@ -104,6 +104,9 @@ class GenerateModelsCommand extends Command
         $output = Artisan::output();
         echo '    CMD: php artisan '.$cmd.' ; Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
+        // 同时需要修改 app/Models/$fmt_path . $fmt_table . 里面的connect和table等信息
+        self::modelFileAddConnectionTable($fmt_path, $fmt_table, $a_path, $a_table);
+
         self::makeCode('cast', $fmt_path, $fmt_table, $a_path, $a_table);
         self::makeCode('event', $fmt_path, $fmt_table, $a_path, $a_table);
         self::makeCode('observer', $fmt_path, $fmt_table, $a_path, $a_table);
@@ -120,6 +123,38 @@ class GenerateModelsCommand extends Command
         $output = Artisan::output();
         echo '    CMD: php artisan '.$cmd.' ; Table ' . $a_table . ' (' . $fmt_table . '), $exitCode: ' . var_export($exitCode, true) . ' $output: ' . var_export($output, true) . "\r\n";
 
+        return ;
+    }
+
+    // model file 中添加protected $table='project'; connection等信息
+    protected function modelFileAddConnectionTable($fmt_path, $fmt_table, $a_path, $a_table) {
+        $l_app_path = rtrim(str_replace(['\\', '//'], '/', app_path('Models')), ' /');
+        $model_file_path = $l_app_path . '/'. $fmt_path . $fmt_table . '.php';
+        if (!file_exists($model_file_path)) {
+            echo $model_file_path . ' file not exist!' . PHP_EOL;
+            return ;
+        }
+        // 检查文件中是否存在 protected $table =
+        $content = file_get_contents($model_file_path);
+        if (false !== strpos($content, 'protected $table ='))
+            return ;
+
+        // 如果有use HasFactory; 则直接在其下
+        $count = 1;
+        $l_spe = 'use HasFactory;';
+        $add_table_str = '
+    protected $connection=\''. $this->_connection .'\';
+    //protected $primaryKey=\'id\';
+    protected $table = \''.$a_table.'\';';
+
+        if (false !== strpos($content, $l_spe)) {
+            $content = str_replace($l_spe, $l_spe . $add_table_str, $content, $count);
+        } else {
+            // 直接替换第一个大括号吧, 替换次数count=1次
+            $l_spe = '{';
+            $content = str_replace($l_spe, $l_spe . $add_table_str, $content, $count);
+        }
+        file_put_contents($model_file_path, $content);
         return ;
     }
 
