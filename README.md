@@ -68,6 +68,11 @@ php artisan make:controller uipps/Admin/CountryController --model=uipps/Admin/Co
 
 ```
 
+- full params
+```
+php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511" -d laravel_dev -t project -p Uipps/Admin --cast=1 -e 1 -o 1 -s 1
+```
+
 #### Support
 
 For the time being, this package supports MySQL only. PostgreSQL and SQLite databases will be Supported in future.
