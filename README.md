@@ -22,6 +22,9 @@ Assuming you have already configured your database, you are now all set to go.
 php artisan generate:models
 
 php artisan generate:models --cast=1 --event=1 --observer=1 --scope=1
+
+// full params
+php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511" -d laravel_dev -t project -p Uipps/Admin --cast=1 -e 1 -o 1 -s 1
 ```
 
 - You can scaffold a specific table like this:
@@ -66,11 +69,6 @@ php artisan generate:models -t Country -p Uipps/Admin
 means:
 php artisan make:controller uipps/Admin/CountryController --model=uipps/Admin/Country
 
-```
-
-- full params
-```
-php artisan generate:models -c "mysql://root:101010@127.0.0.1:3511" -d laravel_dev -t project -p Uipps/Admin --cast=1 -e 1 -o 1 -s 1
 ```
 
 #### Support
